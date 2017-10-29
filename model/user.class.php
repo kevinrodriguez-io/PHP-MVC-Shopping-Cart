@@ -1,5 +1,4 @@
 <?php
-include_once('../database/database.class.php');
 class User {
 
   private $username;
@@ -12,7 +11,8 @@ class User {
 
   public function Login() {
     
-    $db = new DataBase();
+    $dbo = new DataBase();
+    $db = $dbo->CreateConnection();
     $sql = 'SELECT COUNT(*) FROM `USERS` WHERE `USERNAME`=? AND `PASSWORD`=?';
     $statement = $db->prepare($sql);
     $parameters = array($username, $password);

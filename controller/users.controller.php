@@ -1,7 +1,4 @@
 <?php
-
-include_once('base.controller.php');
-
 class UsersController extends BaseController {
     
     public function __CONSTRUCT (){}

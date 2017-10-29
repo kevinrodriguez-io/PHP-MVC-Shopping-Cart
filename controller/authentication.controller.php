@@ -1,9 +1,4 @@
 <?php
-
-include_once('base.controller.php');
-include_once('../security/security.class.php');
-include_once('../model/user.class.php');
-
 class AuthenticationController extends BaseController {
     
     public function __CONSTRUCT (){}
@@ -11,7 +6,7 @@ class AuthenticationController extends BaseController {
     public function Index () {
         parent::RenderPage(
             'Authentication', 
-            'view/shared/dtadmin/layout.php', 
+            'view/shared/login/layout.php', 
             'view/authentication/authentication.php'
         );
     }

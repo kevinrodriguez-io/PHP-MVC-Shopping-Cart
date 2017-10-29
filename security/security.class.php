@@ -1,21 +1,20 @@
 <?php
-innclude_once('../model/user.class.php');
-class security {
+class Security {
   
   const kUSERKEY = 'USER';
 
   public static function CreateSessionForUser ($user) {
     session_start();
-    $_SESSION[kUSERKEY] = $user;
+    $_SESSION[Security::kUSERKEY] = $user;
   }
   public static function UserIsLoggedIn () {
     session_start();
-    return isset($_SESSION[kUSERKEY]);
+    return isset($_SESSION[Security::kUSERKEY]);
   }
   public static function GetLoggedUser () {
     if (Security::UserIsLoggedIn()) {
       session_start();
-      return $_SESSION[kUSERKEY];
+      return $_SESSION[Security::kUSERKEY];
     } else {
       return null;
     }

@@ -19,11 +19,11 @@ class DataBase {
   }
 
   public function CreateConnection() {
-    $BD = new mysqli($hostname,$username,$contrasenia,$database);
-    if($BD->connect_error){
-      throw new Exception('Falló la conexión ('.$BD->connect_errno.')');
+    $db = new mysqli($this->hostname, $this->username, $this->password, $this->database);
+    if($db->connect_error){
+      throw new Exception('Falló la conexión ('.$db->connect_errno.')');
     }
-    return $BD;
+    return $db;
   }
 
 }
