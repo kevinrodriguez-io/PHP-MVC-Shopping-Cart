@@ -18,9 +18,9 @@ abstract class BaseController {
 
   protected function RedirectToController ($controller, $action = null) {
     if ($action != NULL) {
-      header('Location: /?c=' + $controller);
+      header('Location: /?c='.$controller);
     } else {
-      header('Location: /?c=' + $controller + '&a=' + $action);
+      header('Location: /?c='.$controller.'&a='.$action);
     }
     die();
   }

@@ -16,10 +16,12 @@ class AuthenticationController extends BaseController {
         if ($model->Login()) {
             parent::RedirectToController('home');
         } else {
+            $model->setMessage('Combinación usuario/password no válida');
             parent::RenderPage(
                 'Authentication', 
-                'view/shared/dtadmin/layout.php', 
-                'view/authentication/authentication.php'
+                'view/shared/login/layout.php', 
+                'view/authentication/authentication.php',
+                $model
             );
         }
     }
