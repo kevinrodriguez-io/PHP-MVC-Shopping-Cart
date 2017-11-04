@@ -1,7 +1,7 @@
 <?php
 class User {
 
-  /* Mapped */
+  /* Mapped  data test*/
   
   private $idCard; 
   public function getIdCard () { return $this->idCard; }
