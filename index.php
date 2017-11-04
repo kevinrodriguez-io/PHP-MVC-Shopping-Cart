@@ -9,7 +9,7 @@ class FrontController {
     const kDefaultController = 'home';
     const kAuthenticationController = 'authentication';
     const kPublicControllers = [
-        'productlisting'
+        'productlisting', 'users'
     ];
 
     /**

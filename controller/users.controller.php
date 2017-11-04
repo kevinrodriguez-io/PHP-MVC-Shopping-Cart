@@ -35,7 +35,7 @@ class UsersController extends BaseController {
 
     public function Create () {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            (new User(
+            $user = new User(
                 $_REQUEST['username'], 
                 $_REQUEST['password'],
                 $_REQUEST['idCard'],
@@ -44,7 +44,8 @@ class UsersController extends BaseController {
                 $_REQUEST['phone'],
                 $_REQUEST['email'],
                 $_REQUEST['role']
-            ))->Create();
+            );
+            $user->Create();
             parent::RedirectToController('users');
         } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             parent::RenderPage(
