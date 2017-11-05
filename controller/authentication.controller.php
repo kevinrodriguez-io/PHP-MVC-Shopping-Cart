@@ -13,7 +13,9 @@ class AuthenticationController extends BaseController {
 
     public function Login () {
         $model = new User($_REQUEST['username'], $_REQUEST['password']);
-        if ($model->Login()) {
+        $result = $model->Login();
+        if ($result) {
+            Security::CreateSessionForUser(User::GetUserById($result));
             parent::RedirectToController('home');
         } else {
             $model->setMessage('Combinación usuario/password no válida');

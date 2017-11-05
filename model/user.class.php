@@ -4,7 +4,7 @@ class User {
   /* Mapped */
   
   private $id;
-  public function getId () { return $this->$id; }
+  public function getId () { return $this->id; }
   private function setId ($id) { $this->id = $id; }
 
   private $idCard; 
@@ -82,19 +82,22 @@ class User {
   public function Login() {
     
     $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('SELECT COUNT(*) FROM `USERS` WHERE `USERNAME` = ? AND `PASSWORD` = ?');
-    $pwd = Security::HashPassword($this->getPassword());
-    $statement->bind_param('ss', $this->username, $pwd);
+    $statement = $db->prepare('SELECT `ID`, `PASSWORD` FROM `USERS` WHERE `USERNAME` = ?');
+    
+    $statement->bind_param('s', $this->username);
+    $statement->bind_result($ID, $PASSWORD);
 
-    $count = 0;
+    $id = null;
 
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
-        $count = (int)$row[0];
+        if (password_verify($this->password, $PASSWORD)) {
+          $id = $ID;
+        }
       }
     }
 
-    return $count > 0;
+    return $id;
 
   }
 
@@ -109,9 +112,10 @@ class User {
     $db = (new DataBase())->CreateConnection();
     $statement = $db->prepare('SELECT `USERNAME`, `PASSWORD`, `IDCARD`, `NAME`, `LASTNAME`, `PHONE`, `EMAIL`, `ROLE`, `ID` FROM `users` WHERE `ID` = ?');
     $statement->bind_param('i', $id);
+    $statement->bind_result($USERNAME, $PASSWORD, $IDCARD, $NAME, $LASTNAME, $PHONE, $EMAIL, $ROLE, $ID);
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
-        $model = new User($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]);
+        $model = new User($USERNAME, $PASSWORD, $IDCARD, $NAME, $LASTNAME, $PHONE, $EMAIL, $ROLE, $ID);
       }
     }
     return $model;
@@ -126,9 +130,10 @@ class User {
     $models = [];
     $db = (new DataBase())->CreateConnection();
     $statement = $db->prepare('SELECT `USERNAME`, `PASSWORD`, `IDCARD`, `NAME`, `LASTNAME`, `PHONE`, `EMAIL`, `ROLE`, `ID` FROM `users`');
+    $statement->bind_result($USERNAME, $PASSWORD, $IDCARD, $NAME, $LASTNAME, $PHONE, $EMAIL, $ROLE, $ID);
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
-        $model = new User($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]);
+        $model = new User($USERNAME, $PASSWORD, $IDCARD, $NAME, $LASTNAME, $PHONE, $EMAIL, $ROLE, $ID);
         array_push($models, $model);
       }
     }
@@ -143,28 +148,8 @@ class User {
   public function Create () {
     $db = (new DataBase())->CreateConnection();
     $statement = $db->prepare(
-      'INSERT INTO `users` 
-      (
-        `IDCARD`, 
-        `NAME`, 
-        `LASTNAME`, 
-        `PHONE`, 
-        `EMAIL`, 
-        `USERNAME`, 
-        `PASSWORD`, 
-        `ROLE`
-      ) 
-      VALUES 
-      (
-        ?, 
-        ?, 
-        ?, 
-        ?, 
-        ?, 
-        ?, 
-        ?, 
-        ?
-      )'
+      'INSERT INTO `users` (`IDCARD`, `NAME`, `LASTNAME`, `PHONE`, `EMAIL`, `USERNAME`, `PASSWORD`, `ROLE`) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
     );
     $pwd = Security::HashPassword($this->password);
     $statement->bind_param(
