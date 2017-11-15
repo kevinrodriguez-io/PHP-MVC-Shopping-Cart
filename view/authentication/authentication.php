@@ -11,7 +11,7 @@
           <?php if ($MODEL != null) { ?>
             <?=$MODEL->getMessage()?>
           <?php } ?>
-          <a href="#" class="pull-right need-help">He olvidado mi contraseña </a><span class="clearfix"></span>
+          <!-- <a href="#" class="pull-right need-help">He olvidado mi contraseña </a><span class="clearfix"></span> -->
         </form>
       </div>
     </div>

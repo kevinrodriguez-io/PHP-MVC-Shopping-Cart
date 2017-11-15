@@ -29,7 +29,7 @@
         </div>
       </form>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log out</a></li>
+          <li><a href="?c=authentication&a=Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log out</a></li>
         </ul>
     </div>
   </div>

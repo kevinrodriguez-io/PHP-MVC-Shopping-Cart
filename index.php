@@ -1,6 +1,7 @@
 <?php
 include_once('./security/security.class.php');
 include_once('./model/user.class.php');
+include_once('./model/article.class.php');
 include_once('./database/database.class.php');
 include_once('./controller/base.controller.php');
 
@@ -9,7 +10,7 @@ class FrontController {
     const kDefaultController = 'home';
     const kAuthenticationController = 'authentication';
     const kPublicControllers = [
-        'productlisting', 'users'
+        'users'
     ];
 
     /**

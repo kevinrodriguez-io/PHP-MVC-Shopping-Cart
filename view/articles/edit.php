@@ -6,7 +6,7 @@
         <a href="?c=articles">Regresar</a>
       </header>
       <div class="panel-body">
-        <form action="?c=articles&a=Create" method="POST" autocomplete="off">
+        <form action="?c=articles&a=Edit" method="POST" autocomplete="off">
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="code">Código</label>

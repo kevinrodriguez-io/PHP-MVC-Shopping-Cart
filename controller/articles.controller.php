@@ -4,7 +4,7 @@ class ArticlesController extends BaseController {
     public function __CONSTRUCT (){}
     
     public function Index () {
-        $model = User::GetAllUsers();
+        $model = Article::GetAllArticles();
         parent::RenderPage(
             'Articles', 
             'view/shared/dtadmin/layout.php', 

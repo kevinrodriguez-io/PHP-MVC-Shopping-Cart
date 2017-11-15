@@ -18,7 +18,7 @@
             </div>
             <div class="form-group col-md-4">
               <label for="description">Descripción</label>
-              <input type="text" class="form-control" id="description" name="description" placeholder="micorreo@midominio.com">
+              <input type="text" class="form-control" id="description" name="description" placeholder="Descripción">
             </div>
           </div>
           <div class="form-row">
@@ -28,7 +28,7 @@
             </div>
             <div class="form-group col-md-6">
               <label for="quantity">Cantidad</label>
-              <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Apellidos">
+              <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Cantidad">
             </div>
           </div>
           <div class="form-row">

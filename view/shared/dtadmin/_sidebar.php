@@ -11,12 +11,17 @@
     </a>
     </li>
     <li>
-      <a href="?c=Users" class="<?=(($PAGE == 'Users') ? 'active' : '')?>">
+      <a href="?c=users" class="<?=(($PAGE == 'Users') ? 'active' : '')?>">
         <i class="fa fa-building" aria-hidden="true"></i> &nbsp;Users
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href="?c=articles" class="<?=(($PAGE == 'Articles') ? 'active' : '')?>">
+        <i class="fa fa-product-hunt" aria-hidden="true"></i> &nbsp;Articles
+      </a>
+    </li>
+    <li>
+      <a href="?c=authentication&a=Logout">
         <i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp;Log out
       </a>
     </li>
