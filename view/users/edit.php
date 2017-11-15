@@ -27,7 +27,7 @@
               <input value="<?= $MODEL->getName() ?>" type="text" class="form-control" id="name" name="name" placeholder="Nombre">
             </div>
             <div class="form-group col-md-6">
-              <label for="name">Apellidos</label>
+              <label for="lastName">Apellidos</label>
               <input value="<?= $MODEL->getLastname() ?>" type="text" class="form-control" id="lastName" name="lastName" placeholder="Apellidos">
             </div>
           </div>
@@ -42,12 +42,16 @@
             </div>
             <div class="form-group col-md-2">
               <label for="role">Rol</label>
-              <input value="<?= $MODEL->getRole() ?>" type="text" class="form-control" id="role" name="role" placeholder="Rol">
+              <select name="role" id="role" class="form-control">
+                <option value="CLIENT" <?= $MODEL->getRole() === 'CLIENT' ? 'selected="selected"' : ''?>>Cliente</option>
+                <option value="ADMIN" <?= $MODEL->getRole() === 'ADMIN' ? 'selected="selected"' : ''?>>Administrador</option>
+              </select>
+              <!-- <input value="<?= $MODEL->getRole() ?>" type="text" class="form-control" id="role" name="role" placeholder="Rol"> -->
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4">
-            <input type="hidden" name="id" id="id" value="<?= $MODEL->getId() ?>" />
+              <input type="hidden" name="id" id="id" value="<?= $MODEL->getId() ?>" />
               <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> Modificar usuario</button>
             </div>
           </div>

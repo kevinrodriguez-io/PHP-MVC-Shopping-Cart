@@ -27,7 +27,7 @@
               <input type="text" class="form-control" id="name" name="name" placeholder="Nombre">
             </div>
             <div class="form-group col-md-6">
-              <label for="name">Apellidos</label>
+              <label for="lastName">Apellidos</label>
               <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Apellidos">
             </div>
           </div>
@@ -42,7 +42,11 @@
             </div>
             <div class="form-group col-md-2">
               <label for="role">Rol</label>
-              <input type="text" class="form-control" id="role" name="role" placeholder="Rol">
+              <select name="role" id="role" class="form-control">
+                <option value="CLIENT" selected="selected">Cliente</option>
+                <option value="ADMIN">Administrador</option>
+              </select>
+              <!-- <input type="text" class="form-control" id="role" name="role" placeholder="Rol"> -->
             </div>
           </div>
           <div class="form-row">
