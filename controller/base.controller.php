@@ -1,12 +1,6 @@
 <?php
 abstract class BaseController {
 
-  // protected function RenderPage ($pageName, $layoutPath, $viewPath) {
-  //   $PAGE = $pageName; 
-  //   $MASTER_CONTENT = file_get_contents($viewPath); 
-  //   require_once $layoutPath;
-  // }
-
   protected function RenderPage ($pageName, $layoutPath, $viewPath, $model = null) {
     $PAGE = $pageName; 
     $MODEL = $model;
