@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-lg-12">
     <section class="panel">
       <header class="panel-heading">
         <h1>Crear artículo</h1>

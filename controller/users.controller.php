@@ -1,9 +1,24 @@
 <?php
 class UsersController extends BaseController {
     
-    public function __CONSTRUCT (){}
+    private function CheckClientRights ($id) {
+        if ((Security::GetLoggedUser())->getRole() == 'CLIENT' && (Security::GetLoggedUser())->getId() != $id) {
+            parent::RedirectToController('home');
+        }
+    }
+
+    private function RedirectToHomeIfNotAdmin () {
+        if ((Security::GetLoggedUser())->getRole() != 'ADMIN') {
+            parent::RedirectToController('home');
+        }
+    }
+
+    public function __CONSTRUCT () {}
     
     public function Index () {
+
+        $this->RedirectToHomeIfNotAdmin();
+
         $model = User::GetAllUsers();
         parent::RenderPage(
             'Users', 
@@ -14,6 +29,9 @@ class UsersController extends BaseController {
     }
     
     public function Edit () {
+
+        $this->CheckClientRights($_REQUEST['id']);
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $model = new User(
                 $_REQUEST['username'], 
@@ -41,6 +59,9 @@ class UsersController extends BaseController {
     }
 
     public function Create () {
+
+        $this->RedirectToHomeIfNotAdmin();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = new User(
                 $_REQUEST['username'], 
@@ -64,6 +85,9 @@ class UsersController extends BaseController {
     }
 
     public function Delete () {
+
+        $this->RedirectToHomeIfNotAdmin();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = (int)$_REQUEST['id'];
             $model = User::GetUserById($id);
@@ -82,6 +106,9 @@ class UsersController extends BaseController {
     }
 
     public function Details () {
+
+        $this->RedirectToHomeIfNotAdmin();
+
         $id = (int)$_REQUEST['id'];
         $model = User::GetUserById($id);
         parent::RenderPage(
