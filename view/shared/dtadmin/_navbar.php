@@ -35,7 +35,7 @@
             <a href="?c=cart">
               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
               &nbsp;
-              <?=count($cart->getArticles())?> articulos en el carrito
+              <?=count($cart->articles)?> articulos en el carrito
             </a>
           </li>
         <?php } ?>

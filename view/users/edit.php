@@ -2,15 +2,19 @@
   <div class="col-lg-12">
     <section class="panel">
       <header class="panel-heading">
-        <h1>Modificar usuario</h1>
-        <a href="?c=users">Regresar</a>
+        <?php if ((Security::GetLoggedUser())->getRole() == 'ADMIN') { ?>
+          <h1>Modificar usuario</h1>
+          <a href="?c=users">Regresar</a>
+        <?php } else { ?>
+          <h1>Mi cuenta</h1>
+        <?php } ?>
       </header>
       <div class="panel-body">
         <form action="?c=users&a=Edit" method="POST" autocomplete="off">
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="username">Usuario</label>
-              <input value="<?= $MODEL->getUsername() ?>" type="text" class="form-control" id="username" name="username" placeholder="Usuario">
+              <input value="<?= $MODEL->getUsername() ?>" type="text" class="form-control" id="username" name="username" placeholder="Usuario" <?=(Security::GetLoggedUser())->getRole() == 'CLIENT' ? 'disabled="disabled"' : ''?>>
             </div>
             <div class="form-group col-md-4">
               <label for="password">Contraseña</label>
@@ -42,11 +46,10 @@
             </div>
             <div class="form-group col-md-2">
               <label for="role">Rol</label>
-              <select name="role" id="role" class="form-control">
+              <select name="role" id="role" class="form-control" <?=(Security::GetLoggedUser())->getRole() == 'CLIENT' ? 'disabled="disabled"' : ''?>>
                 <option value="CLIENT" <?= $MODEL->getRole() === 'CLIENT' ? 'selected="selected"' : ''?>>Cliente</option>
                 <option value="ADMIN" <?= $MODEL->getRole() === 'ADMIN' ? 'selected="selected"' : ''?>>Administrador</option>
               </select>
-              <!-- <input value="<?= $MODEL->getRole() ?>" type="text" class="form-control" id="role" name="role" placeholder="Rol"> -->
             </div>
           </div>
           <div class="form-row">

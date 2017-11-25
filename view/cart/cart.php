@@ -12,7 +12,6 @@
               <th>Marca</th>
               <th>Descripción</th>
               <th>Precio</th>
-              <th>Cantidad</th>
             </tr>
           </thead>
           <tbody>
@@ -24,7 +23,6 @@
                 <td><?=$article->getBrand()?></td>
                 <td><?=$article->getDescription()?></td>
                 <td><?=$article->getPrice()?></td>
-                <td><?=$article->getQuantity()?></td>
               </tr>
             <?php 
               }

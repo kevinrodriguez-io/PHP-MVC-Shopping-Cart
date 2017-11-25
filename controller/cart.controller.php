@@ -1,11 +1,11 @@
 <?php
-class HomeController extends BaseController {
+class CartController extends BaseController {
     
     public function __CONSTRUCT (){}
     
     public function Index () {
         $cart = ShoppingCartSession::GetShoppingCart();
-        $model = $cart->getArticles();
+        $model = $cart->articles;
         parent::RenderPage(
             'Cart', 
             'view/shared/dtadmin/layout.php', 

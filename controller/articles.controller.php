@@ -93,10 +93,10 @@ class ArticlesController extends BaseController {
             $cart = null;
             if (ShoppingCartSession::ShoppingCartExists()) {
                 $cart = ShoppingCartSession::GetShoppingCart();
-                array_push($cart->getArticles(), $article);
+                array_push($cart->articles, $article);
             } else {
                 $cart = new ShoppingCart();
-                array_push($cart->getArticles(), $article);
+                array_push($cart->articles, $article);
             }
             ShoppingCartSession::StoreShoppingCartInSession($cart);
             parent::RedirectToController('articles');

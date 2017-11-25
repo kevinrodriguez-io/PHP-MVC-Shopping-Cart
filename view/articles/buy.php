@@ -15,7 +15,7 @@
           <dt>Precio</dt><dd><?= $MODEL->getPrice() ?></dd>
           <dt>Cantidad</dt><dd><?= $MODEL->getQuantity() ?></dd>
         </dl>
-        <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-cart-plus"></i> Comprar</button>
+        <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-cart-plus"></i> Agregar al carrito</button>
       </form>
     </div>
   </section>
