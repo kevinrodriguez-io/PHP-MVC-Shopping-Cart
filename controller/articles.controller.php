@@ -86,6 +86,32 @@ class ArticlesController extends BaseController {
         );
     }
 
+    public function Buy () {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = (int)$_REQUEST['id'];
+            $article = Article::GetArticleById($id);
+            $cart = null;
+            if (ShoppingCartSession::ShoppingCartExists()) {
+                $cart = ShoppingCartSession::GetShoppingCart();
+                array_push($cart->getArticles(), $article);
+            } else {
+                $cart = new ShoppingCart();
+                array_push($cart->getArticles(), $article);
+            }
+            ShoppingCartSession::StoreShoppingCartInSession($cart);
+            parent::RedirectToController('articles');
+        } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $id = (int)$_REQUEST['id'];
+            $model = Article::GetArticleById($id);
+            parent::RenderPage(
+                'Articles',
+                'view/shared/dtadmin/layout.php', 
+                'view/articles/buy.php',
+                $model
+            );
+        }
+    }
+
 }
 
 ?>

@@ -2,10 +2,7 @@
   <div class="col-lg-12">
     <section class="panel">
       <header class="panel-heading">
-        <h1>Artículos</h1>
-        <?php if ((Security::GetLoggedUser())->getRole() == 'ADMIN') { ?>
-          <a href="?c=articles&a=Create" class="btn btn-success">Crear</a>
-        <?php } ?>
+        <h1>Artículos en mi carrito</h1>
       </header>
       <div class="panel-body">
         <table class="table table-striped table-hover">
@@ -16,7 +13,6 @@
               <th>Descripción</th>
               <th>Precio</th>
               <th>Cantidad</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -29,15 +25,6 @@
                 <td><?=$article->getDescription()?></td>
                 <td><?=$article->getPrice()?></td>
                 <td><?=$article->getQuantity()?></td>
-                <td>
-                  <?php if ((Security::GetLoggedUser())->getRole() == 'ADMIN') { ?>
-                    <a class="fa fa-eye btn btn-info btn-sm" href="?c=articles&a=Details&id=<?=$article->getId()?>"></a>
-                    <a class="fa fa-pencil btn btn-warning btn-sm" href="?c=articles&a=Edit&id=<?=$article->getId()?>"></a>
-                    <a class="fa fa-trash btn btn-danger btn-sm" href="?c=articles&a=Delete&id=<?=$article->getId()?>"></a>
-                  <?php } else { ?>
-                    <a class="btn btn-primary btn-sm" href="?c=articles&a=Buy&id=<?=$article->getId()?>"><i class="fa fa-cart-plus"></i> Comprar</a>
-                  <?php } ?>
-                </td>
               </tr>
             <?php 
               }

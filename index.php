@@ -1,7 +1,10 @@
 <?php
 include_once('./security/security.class.php');
+include_once('./session/shoppingcart.session.php');
 include_once('./model/user.class.php');
 include_once('./model/article.class.php');
+include_once('./model/sale.class.php');
+include_once('./model/shoppingcart.class.php');
 include_once('./database/database.class.php');
 include_once('./controller/base.controller.php');
 
@@ -12,8 +15,6 @@ class FrontController {
     const kPublicControllers = ['users'];
 
     /**
-     * Undocumented function
-     *
      * @return bool
      */
     private static function IsLoginRequest () {
@@ -26,8 +27,6 @@ class FrontController {
     }
 
     /**
-     * Undocumented function
-     *
      * @return bool
      */
     private static function IsPublicRequest () {
@@ -37,8 +36,6 @@ class FrontController {
     }
 
     /**
-     * Undocumented function
-     *
      * @param string $default The default controller to be rendered
      * @return void
      */
@@ -47,8 +44,6 @@ class FrontController {
     }
 
     /**
-     * Undocumented function
-     *
      * @param string $controller - A default controller to rendered
      * @return void
      */
@@ -60,8 +55,6 @@ class FrontController {
     }
 
     /**
-     * Undocumented function
-     *
      * @return void
      */
     private static function RenderFromQueryString () {
@@ -77,19 +70,14 @@ class FrontController {
     }
 
     public static function ProcessRequest () {
-
         // If user is logged in, just render 
         if (Security::UserIsLoggedIn()) { FrontController::RenderController(); return; }
-        
         // If this is a login request, just render
         if (FrontController::IsLoginRequest()) { FrontController::RenderController(); return; }
-
         // If this is a public request, just render
         if (FrontController::IsPublicRequest()) {  FrontController::RenderController(); return; }
-
         // Otherwise, force render authentication controller (Login screen)
         header('Location: ?c='.FrontController::kAuthenticationController);
-
     }
 
 }

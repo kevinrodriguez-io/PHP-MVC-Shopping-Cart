@@ -29,6 +29,16 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
+        <?php if (Security::GetLoggedUser() != null && ShoppingCartSession::ShoppingCartExists()) { 
+                $cart = ShoppingCartSession::GetShoppingCart(); ?>
+          <li>
+            <a href="?c=cart">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              &nbsp;
+              <?=count($cart->getArticles())?> articulos en el carrito
+            </a>
+          </li>
+        <?php } ?>
         <li><a href="?c=authentication&a=Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Cerrar sesión</a></li>
       </ul>
     </div>
