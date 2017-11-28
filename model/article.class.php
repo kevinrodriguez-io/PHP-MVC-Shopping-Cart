@@ -27,14 +27,12 @@ class Article {
   public function getQuantity () { return $this->quantity; }
   public function setQuantity ($quantity) { $this->quantity = $quantity; }
 
-  /**
-   * @param string $code Barcode
-   * @param string $brand The brand of the article
-   * @param string $description The description of the article
-   * @param decimal $price The price of the article
-   * @param int $quantity The quantity of available articles
-   * @param int $id The unique, autoincremental identifier for this product
-   */
+  /* No-mapped */
+
+  private $cartUniqueId;
+  public function getCartUniqueId () { return $this->cartUniqueId; }
+  public function setCartUniqueId ($cartUniqueId) { $this->cartUniqueId = $cartUniqueId; }
+
   public function __construct(
     $code = '',
     $brand = '',
@@ -49,14 +47,10 @@ class Article {
     $this->price = $price;
     $this->quantity = $quantity;
     $this->id = $id;
+    
+    $this->cartUniqueId = uniqid('CART_');
   }
 
-  /**
-   * Fetches an article by the given id
-   *
-   * @param int $id Id of the article to get
-   * @return Article The article with the corresponding id, otherwise null
-   */
   public static function GetArticleById ($id) {
     $model = null;
     $db = (new DataBase())->CreateConnection();
@@ -71,11 +65,6 @@ class Article {
     return $model;
   }
 
-  /**
-   * Fetches all the articles on the database
-   *
-   * @return array An array of articles
-   */
   public static function GetAllArticles () {
     $models = [];
     $db = (new DataBase())->CreateConnection();
@@ -90,11 +79,6 @@ class Article {
     return $models;
   }
 
-  /**
-   * Inserts the current article on the database
-   *
-   * @return void
-   */
   public function Create () {
     $db = (new DataBase())->CreateConnection();
     $statement = $db->prepare('INSERT INTO `articles`(`CODE`, `BRAND`, `DESCRIPTION`, `PRICE`, `QUANTITY`) VALUES (?, ?, ?, ?, ?)');
@@ -109,11 +93,6 @@ class Article {
     $statement->execute();
   }
 
-  /**
-   * Updates this article (ID NEEDED) on the database
-   *
-   * @return void
-   */
   public function Edit () {
     $db = (new DataBase())->CreateConnection();
     $statement = $db->prepare(
@@ -137,12 +116,6 @@ class Article {
     $statement->execute();
   }
 
-  /**
-   * Removes this article on the database, 
-   * doesn't delete this object
-   *
-   * @return void
-   */
   public function Delete () {
     $db = (new DataBase())->CreateConnection();
     $statement = $db->prepare('DELETE FROM `articles` WHERE `ID` = ?');
