@@ -46,6 +46,25 @@ class CartController extends BaseController {
         );
     }
 
+    public function ConfirmCheckout () {
+        if (ShoppingCartSession::ShoppingCartExists()) {
+            $cart = ShoppingCartSession::GetShoppingCart();
+            $cart->articles;
+            foreach ($cart->articles as $article) {
+                $user = Security::GetLoggedUser();
+                $sale = new Sale(
+                    $user->getId(),
+                    $article->getId(),
+                    $invoiceNumber = (Setting::GetLastInvoiceNumber() + 1),
+                    $saleDate = (new DateTime())->format('Y-m-d H:i:s')
+                );
+                $sale->Create();
+            }
+        } else {
+            parent::RedirectToController('articles');
+        }
+    }
+
 }
 
 ?>

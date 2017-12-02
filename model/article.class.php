@@ -123,5 +123,7 @@ class Article {
     $statement->execute();
   }
 
+  
+
 }
 ?>

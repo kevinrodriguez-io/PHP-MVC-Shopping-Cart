@@ -4,6 +4,7 @@ include_once('./session/shoppingcart.session.php');
 include_once('./model/user.class.php');
 include_once('./model/article.class.php');
 include_once('./model/sale.class.php');
+include_once('./model/settings.class.php');
 include_once('./model/shoppingcart.class.php');
 include_once('./database/database.class.php');
 include_once('./controller/base.controller.php');

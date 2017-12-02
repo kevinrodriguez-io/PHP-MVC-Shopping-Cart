@@ -20,7 +20,9 @@
           <b>Total:</b> <?= array_sum(array_map(function ($element) { return $element->getPrice(); }, $MODEL));?>
         </div>
         <div class="m-top15">
-          <button class="btn btn-block btn-lg btn-success"><i class="fa fa-shield"></i> Realizar compra</button>
+          <form action="?c=cart&a=ConfirmCheckout">
+            <button type="submit" class="btn btn-block btn-lg btn-success"><i class="fa fa-shield"></i> Realizar compra</button>
+          </form>  
         </div>
     </section>
   </div>
