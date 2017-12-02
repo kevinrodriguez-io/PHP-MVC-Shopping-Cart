@@ -103,6 +103,11 @@ class Sale {
       $this->saleDate
     );
     $statement->execute();
+
+    $article = Article::GetArticleById($this->articleID);
+    $article->setQuantity($article->getQuantity()-1);
+    $article->Edit();
+
   }
 
   public function Edit () {

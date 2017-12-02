@@ -57,11 +57,11 @@ class Setting {
   // Other helper methods
 
   public static function GetLastInvoiceNumber() {
-    return (int)(Settings::GetSettingByKey('LASTINVOICENUMBER'))->getSValue();
+    return (int)(Setting::GetSettingByKey('LASTINVOICENUMBER'))->getSValue();
   }
 
   public static function IncrementLastInvoiceNumber () {
-    $model = Settings::GetSettingByKey('LASTINVOICENUMBER');
+    $model = Setting::GetSettingByKey('LASTINVOICENUMBER');
     $model->setSvalue(($model->getSValue()+1));
     $model->Edit();
   }
