@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2017 at 06:36 AM
+-- Generation Time: Dec 03, 2017 at 03:47 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -42,7 +42,8 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`ID`, `CODE`, `BRAND`, `DESCRIPTION`, `PRICE`, `QUANTITY`) VALUES
-(1, 'AB001', 'Phillips', 'Desatornillador', '2500.00', 49);
+(7, 'A001', 'Black and Decker', 'Cofee Maker MK1', '38000.00', 17),
+(8, 'A002', 'Shi Fa Zhun', 'Cofee Maker Chino', '6000.00', 9);
 
 -- --------------------------------------------------------
 
@@ -57,6 +58,33 @@ CREATE TABLE `sales` (
   `INVOICENUMBER` varchar(50) NOT NULL,
   `SALEDATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`ID`, `USERID`, `ARTICLEID`, `INVOICENUMBER`, `SALEDATE`) VALUES
+(6, 4, 7, '1', '2017-12-03 02:20:31'),
+(7, 4, 7, '2', '2017-12-03 02:20:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `ID` int(11) NOT NULL,
+  `SKEY` varchar(50) NOT NULL,
+  `SVALUE` varchar(21792) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`ID`, `SKEY`, `SVALUE`) VALUES
+(1, 'LASTINVOICENUMBER', '2');
 
 -- --------------------------------------------------------
 
@@ -81,7 +109,35 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `IDCARD`, `NAME`, `LASTNAME`, `PHONE`, `EMAIL`, `USERNAME`, `PASSWORD`, `ROLE`) VALUES
-(1, '115870399', 'Kevinx', 'Rodriguez', '84215616', '_@kevinrodriguez.io', 'admin', '$2y$10$BW9pwXpxlW6Tz3srlKxT5OWhYbdSyKRHd/CfFKdgr3pFZ3oW.0i56', 'ADMIN');
+(3, '115870399', 'Kevin', 'Rodriguez', '84215616', '_@kevinrodriguez.io', 'admin', '$2y$10$kVqYJNd1U//al6swg0wE9ODlC8DeCus9qGW5vG8MMqMwvxdgq2l4e', 'ADMIN'),
+(4, '115870400', 'Angela', 'Jhonson', '85326727', 'maquinadehielo@gmail.com', 'client', '$2y$10$mdHY7TasIGa8Aizqt.PROeSX1HAR1O7C1UAEgK15mPEKuspnYdAYS', 'CLIENT');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vwsales`
+-- (See below for the actual view)
+--
+CREATE TABLE `vwsales` (
+`ID` int(11)
+,`USERID` int(11)
+,`USERNAME` varchar(50)
+,`ARTICLEID` int(11)
+,`CODE` varchar(50)
+,`BRAND` varchar(50)
+,`DESCRIPTION` varchar(1024)
+,`INVOICENUMBER` varchar(50)
+,`SALEDATE` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vwsales`
+--
+DROP TABLE IF EXISTS `vwsales`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwsales`  AS  select `s`.`ID` AS `ID`,`s`.`USERID` AS `USERID`,`u`.`USERNAME` AS `USERNAME`,`s`.`ARTICLEID` AS `ARTICLEID`,`a`.`CODE` AS `CODE`,`a`.`BRAND` AS `BRAND`,`a`.`DESCRIPTION` AS `DESCRIPTION`,`s`.`INVOICENUMBER` AS `INVOICENUMBER`,`s`.`SALEDATE` AS `SALEDATE` from ((`sales` `s` join `users` `u` on((`s`.`USERID` = `u`.`ID`))) join `articles` `a` on((`s`.`ARTICLEID` = `a`.`ID`))) ;
 
 --
 -- Indexes for dumped tables
@@ -101,6 +157,13 @@ ALTER TABLE `sales`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `SKEY` (`SKEY`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -118,19 +181,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
