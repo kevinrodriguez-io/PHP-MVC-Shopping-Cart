@@ -59,8 +59,8 @@ class CartController extends BaseController {
                     $saleDate = (new DateTime())->format('Y-m-d H:i:s')
                 );
                 $sale->Create();
-                parent::RedirectToController('articles'); // Succesful, redirect to sale history
             }
+            parent::RedirectToController('cart', 'Empty'); // Succesful, redirect to sale history
         } else {
             parent::RedirectToController('articles');
         }

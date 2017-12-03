@@ -35,63 +35,6 @@ class Sale {
     $this->id = $id;
   }
 
-  public static function GetSaleById ($id) {
-    $model = null;
-    $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('SELECT `USERID`, `ARTICLEID`, `INVOICENUMBER`, `SALEDATE`, `ID` FROM `sales` WHERE `ID` = ?');
-    $statement->bind_param('i', $id);
-    $statement->bind_result($USERID, $ARTICLEID, $INVOICENUMBER, $SALEDATE, $ID);
-    if ($statement->execute()) {
-      while ($row = $statement->fetch()) {
-        $model = new Sale($USERID, $ARTICLEID, $INVOICENUMBER, $SALEDATE, $ID);
-      }
-    }
-    return $model;
-  }
-
-  public static function GetAllSales () {
-    $models = [];
-    $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('SELECT `USERID`, `ARTICLEID`, `INVOICENUMBER`, `SALEDATE`, `ID` FROM `sales`');
-    $statement->bind_result($USERID, $ARTICLEID, $INVOICENUMBER, $SALEDATE, $ID);
-    if ($statement->execute()) {
-      while ($row = $statement->fetch()) {
-        $model = new Sale($USERID, $ARTICLEID, $INVOICENUMBER, $SALEDATE, $ID);
-        array_push($models, $model);
-      }
-    }
-    return $models;
-  }
-
-  public static function GetSaleByInvoiceNumber ($invoiceNumber) {
-    $model = null;
-    $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('SELECT `USERID`, `ARTICLEID`, `INVOICENUMBER`, `SALEDATE`, `ID` FROM `sales` WHERE `INVOICENUMBER` = ?');
-    $statement->bind_param('s', $invoiceNumber);
-    $statement->bind_result($USERID, $ARTICLEID, $INVOICENUMBER, $SALEDATE, $ID);
-    if ($statement->execute()) {
-      while ($row = $statement->fetch()) {
-        $model = new Sale($USERID, $ARTICLEID, $INVOICENUMBER, $SALEDATE, $ID);
-      }
-    }
-    return $model;
-  }
-
-  public static function FindSalesByInvoiceNumber ($invoiceNumber) {
-    $models = [];
-    $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('SELECT `USERID`, `ARTICLEID`, `INVOICENUMBER`, `SALEDATE`, `ID` FROM `sales` WHERE `INVOICENUMBER` LIKE ?');
-    $statement->bind_param('s', $invoiceNumber);
-    $statement->bind_result($USERID, $ARTICLEID, $INVOICENUMBER, $SALEDATE, $ID);
-    if ($statement->execute()) {
-      while ($row = $statement->fetch()) {
-        $model = new Sale($USERID, $ARTICLEID, $INVOICENUMBER, $SALEDATE, $ID);
-        array_push($models, $model);
-      }
-    }
-    return $models;
-  }
-
   public function Create () {
     $db = (new DataBase())->CreateConnection();
     $statement = $db->prepare('INSERT INTO `sales`(`USERID`, `ARTICLEID`, `INVOICENUMBER`, `SALEDATE`) VALUES (?, ?, ?, ?)');
@@ -103,6 +46,8 @@ class Sale {
       $this->saleDate
     );
     $statement->execute();
+
+    Setting::IncrementLastInvoiceNumber();
 
     $article = Article::GetArticleById($this->articleID);
     $article->setQuantity($article->getQuantity()-1);

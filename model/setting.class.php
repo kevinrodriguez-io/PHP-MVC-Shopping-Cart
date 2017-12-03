@@ -62,7 +62,7 @@ class Setting {
 
   public static function IncrementLastInvoiceNumber () {
     $model = Setting::GetSettingByKey('LASTINVOICENUMBER');
-    $model->setSvalue(($model->getSValue()+1));
+    $model->setSValue(($model->getSValue()+1));
     $model->Edit();
   }
 

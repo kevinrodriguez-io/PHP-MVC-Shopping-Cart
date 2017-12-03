@@ -20,13 +20,18 @@
       <?php } else { ?>
         <li>
           <a href="?c=users&a=Edit&id=<?=(Security::GetLoggedUser())->getId()?>" class="<?=(($PAGE == 'Users') ? 'active' : '')?>">
-            <i class="fa fa-building" aria-hidden="true"></i> &nbsp;Mi cuenta
+            <i class="fa fa-building" aria-hidden="true"></i>&nbsp;Mi cuenta
+          </a>
+        </li>
+        <li>
+          <a href="?c=sales">
+            <i class="fa fa-history" aria-hidden="true"></i>&nbsp;Historial de compras
           </a>
         </li>
       <?php } ?>
       <li>
         <a href="?c=articles" class="<?=(($PAGE == 'Articles') ? 'active' : '')?>">
-          <i class="fa fa-product-hunt" aria-hidden="true"></i> &nbsp;Artículos
+          <i class="fa fa-product-hunt" aria-hidden="true"></i>&nbsp;Artículos
         </a>
       </li>
     <?php } ?>
