@@ -76,7 +76,7 @@ class vwSale {
   public static function GetAllSales () {
     $models = [];
     $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('SELECT `USERID`, `USERNAME`, `ARTICLEID`, `CODE`, `BRAND`, `DESCRIPTION` `INVOICENUMBER`, `SALEDATE`, `ID` FROM `vwsales`');
+    $statement = $db->prepare('SELECT `USERID`, `USERNAME`, `ARTICLEID`, `CODE`, `BRAND`, `DESCRIPTION`, `INVOICENUMBER`, `SALEDATE`, `ID` FROM `vwsales`');
     $statement->bind_result($USERID, $USERNAME, $ARTICLEID, $CODE, $BRAND, $DESCRIPTION, $INVOICENUMBER, $SALEDATE, $ID);
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
@@ -90,9 +90,9 @@ class vwSale {
   public static function GetAllSalesForUser ($userID) {
     $models = [];
     $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('SELECT `USERID`, `USERNAME`, `ARTICLEID`, `CODE`, `BRAND`, `DESCRIPTION` `INVOICENUMBER`, `SALEDATE`, `ID` FROM `vwsales` WHERE `USERID` = ?');
-    $statement->bind_param('i', $userID);
+    $statement = $db->prepare('SELECT `USERID`, `USERNAME`, `ARTICLEID`, `CODE`, `BRAND`, `DESCRIPTION`, `INVOICENUMBER`, `SALEDATE`, `ID` FROM `vwsales` WHERE `USERID` = ?');
     $statement->bind_result($USERID, $USERNAME, $ARTICLEID, $CODE, $BRAND, $DESCRIPTION, $INVOICENUMBER, $SALEDATE, $ID);
+    $statement->bind_param('i', $userID);
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
         $model = new vwSale($USERID, $USERNAME, $ARTICLEID, $CODE, $BRAND, $DESCRIPTION, $INVOICENUMBER, $SALEDATE, $ID);
@@ -105,7 +105,7 @@ class vwSale {
   public static function GetSaleByInvoiceNumber ($invoiceNumber) {
     $model = null;
     $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('SELECT `USERID`, `USERNAME`, `ARTICLEID`, `CODE`, `BRAND`, `DESCRIPTION` `INVOICENUMBER`, `SALEDATE`, `ID` FROM `vwsales` WHERE `INVOICENUMBER` = ?');
+    $statement = $db->prepare('SELECT `USERID`, `USERNAME`, `ARTICLEID`, `CODE`, `BRAND`, `DESCRIPTION`, `INVOICENUMBER`, `SALEDATE`, `ID` FROM `vwsales` WHERE `INVOICENUMBER` = ?');
     $statement->bind_param('s', $invoiceNumber);
     $statement->bind_result($USERID, $USERNAME, $ARTICLEID, $CODE, $BRAND, $DESCRIPTION, $INVOICENUMBER, $SALEDATE, $ID);
     if ($statement->execute()) {
@@ -119,7 +119,7 @@ class vwSale {
   public static function FindSalesByInvoiceNumber ($invoiceNumber) {
     $models = [];
     $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('SELECT `USERID`, `USERNAME`, `ARTICLEID`, `CODE`, `BRAND`, `DESCRIPTION` `INVOICENUMBER`, `SALEDATE`, `ID` FROM `vwsales` WHERE `INVOICENUMBER` LIKE ?');
+    $statement = $db->prepare('SELECT `USERID`, `USERNAME`, `ARTICLEID`, `CODE`, `BRAND`, `DESCRIPTION`, `INVOICENUMBER`, `SALEDATE`, `ID` FROM `vwsales` WHERE `INVOICENUMBER` LIKE ?');
     $statement->bind_param('s', $invoiceNumber);
     $statement->bind_result($USERID, $USERNAME, $ARTICLEID, $CODE, $BRAND, $DESCRIPTION, $INVOICENUMBER, $SALEDATE, $ID);
     if ($statement->execute()) {

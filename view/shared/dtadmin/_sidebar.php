@@ -8,13 +8,18 @@
     <?php if (Security::UserIsLoggedIn()) { ?>
       <li>
         <a href="?c=home" class="<?=(($PAGE == 'Home') ? 'active' : '')?>">
-          <i class="fa fa-dashboard" aria-hidden="true"></i> &nbsp;Dashboard
+          <i class="fa fa-dashboard" aria-hidden="true"></i> &nbsp;Inicio
         </a>
       </li>
       <?php if ((Security::GetLoggedUser())->getRole() == 'ADMIN') { ?>
         <li>
           <a href="?c=users" class="<?=(($PAGE == 'Users') ? 'active' : '')?>">
             <i class="fa fa-building" aria-hidden="true"></i> &nbsp;Usuarios
+          </a>
+        </li>
+        <li>
+          <a href="?c=sales" class="<?=(($PAGE == 'Sales') ? 'active' : '')?>">
+            <i class="fa fa-history" aria-hidden="true"></i>&nbsp;Ventas
           </a>
         </li>
       <?php } else { ?>
@@ -24,7 +29,7 @@
           </a>
         </li>
         <li>
-          <a href="?c=sales">
+          <a href="?c=sales" class="<?=(($PAGE == 'Sales') ? 'active' : '')?>">
             <i class="fa fa-history" aria-hidden="true"></i>&nbsp;Historial de compras
           </a>
         </li>
