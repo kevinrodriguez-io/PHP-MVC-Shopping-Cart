@@ -20,14 +20,14 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left">
+      <!-- <form class="navbar-form navbar-left">
         <div class="input-group">
           <input type="text" placeholder="Buscar" class="form-control">
           <span class="input-group-btn">
           <button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
         </span>
         </div>
-      </form>
+      </form> -->
       <ul class="nav navbar-nav navbar-right">
         <?php if (Security::GetLoggedUser() != null && ShoppingCartSession::ShoppingCartExists()) { 
                 $cart = ShoppingCartSession::GetShoppingCart(); ?>

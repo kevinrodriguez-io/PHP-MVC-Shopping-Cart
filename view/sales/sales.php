@@ -9,7 +9,7 @@
         <?php } ?>
       </header>
       <div class="panel-body">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover dt-datatable">
           <thead>
             <tr>
             <?php if ((Security::GetLoggedUser())->getRole() == 'ADMIN') { ?>

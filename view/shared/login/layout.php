@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="assets/dtadmin/styles/dt-theme.css">
   <link rel="stylesheet" href="assets/dtadmin/styles/dt-styles.css">
   <link rel="stylesheet" href="assets/dtadmin/styles/login.css">
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
 </head>
 <body>
   <!---->

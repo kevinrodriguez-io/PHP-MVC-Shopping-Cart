@@ -15,9 +15,9 @@
       <header class="panel-heading">
       </header>
       <div class="panel-body">
-        <div class="col-sm-4 col-sm-offset-4">
+        <p class="col-lg-12 text-center">
           Copyright (C) <?=date('Y')?> - <a href="http://kevinrodriguez.io/">kevinrodriguez.io</a> 
-        </div>
+        </p>
       </div>
     </section>
   </div>

@@ -6,7 +6,7 @@
         <a href="?c=users&a=Create" class="btn btn-success">Crear</a>
       </header>
       <div class="panel-body">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover dt-datatable">
           <thead>
             <tr>
               <th>Nombre de usuario</th>
@@ -14,7 +14,7 @@
               <th>Apellidos</th>
               <th>Teléfono</th>
               <th>Correo electrónico</th>
-              <th></th>
+              <th class="no-sort"></th>
             </tr>
           </thead>
           <tbody>

@@ -8,7 +8,7 @@
         <?php } ?>
       </header>
       <div class="panel-body">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover dt-datatable">
           <thead>
             <tr>
               <th>Código</th>
@@ -16,7 +16,7 @@
               <th>Descripción</th>
               <th>Precio</th>
               <th>Cantidad</th>
-              <th></th>
+              <th class="no-sort"></th>
             </tr>
           </thead>
           <tbody>

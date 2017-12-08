@@ -7,14 +7,14 @@
         <a href="?c=cart&a=Empty" class="btn btn-danger"><i class="fa fa-trash"></i> Vaciar carrito</a>
       </header>
       <div class="panel-body">
-        <table id="shoppingCart-table" class="table table-striped table-hover">
+        <table class="table table-striped table-hover dt-datatable">
           <thead>
             <tr>
               <th>Código</th>
               <th>Marca</th>
               <th>Descripción</th>
               <th>Precio</th>
-              <th></th>
+              <th class="no-sort"></th>
             </tr>
           </thead>
           <tbody>
@@ -44,8 +44,3 @@
     </section>
   </div>
 </div>
-<script type="text/javascript">
-$(function () {
-  $('#shoppingCart-table').dataTable();
-})
-</script>
