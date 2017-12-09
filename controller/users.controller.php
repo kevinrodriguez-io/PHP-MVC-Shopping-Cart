@@ -143,7 +143,7 @@ class UsersController extends BaseController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = (int)$_REQUEST['id'];
             $model = User::GetUserById($id);
-            parent::RenderJson($model);
+            parent::RenderJson($model->ToAssociativeArray());
         }
     }
 

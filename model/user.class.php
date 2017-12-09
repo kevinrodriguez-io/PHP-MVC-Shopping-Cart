@@ -215,5 +215,20 @@ class User {
     $statement->execute();
   }
 
+  public function ToAssociativeArray () {
+    return array(
+      'id' => $this->id,
+      'idCard' => $this->idCard,
+      'name' => $this->name,
+      'lastName' => $this->lastName,
+      'phone' => $this->phone,
+      'email' => $this->email,
+      'username' => $this->username,
+      'password' => $this->password,
+      'role' => $this->role,
+      'message' => $this->message
+    );
+  }
+
 }
 ?>
