@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-6 col-md-4 col-md-offset-4">
-      <h1 class="text-center login-title">Por favor ingrese sus datos para continuar</h1>
       <div class="account-wall">
         <img class="profile-img" src="assets/dtadmin/images/userneedslogin.png" alt="User needs login">
         <form class="form-signin" action="?c=authentication&a=Login" method="POST" >

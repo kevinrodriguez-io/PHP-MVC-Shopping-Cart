@@ -14,7 +14,7 @@ class FrontController {
     
     const kDefaultController = 'home';
     const kAuthenticationController = 'authentication';
-    const kPublicControllers = ['users'];
+    const kPublicControllers = [];
 
     /**
      * @return bool

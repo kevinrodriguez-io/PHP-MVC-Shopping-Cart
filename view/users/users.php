@@ -29,10 +29,10 @@
                 <td><?=$user->getEmail()?></td>
                 <td id="userButtons-cell">
                     <a class="fa fa-eye btn btn-info btn-sm" href="?c=users&a=Details&id=<?=$user->getId()?>"></a>
-                    <button onclick="getUserDetails(this)" class="btn btn-info btn-sm" data-href="?c=users&a=DetailsJson&id=<?=$user->getId()?>"><i class="fa fa-eye"></i> Detalles</button>
+                    <!-- <button onclick="getUserDetails(this)" class="btn btn-info btn-sm" data-href="?c=users&a=DetailsJson&id=<?=$user->getId()?>"><i class="fa fa-eye"></i> Detalles</button> -->
                     <a class="fa fa-pencil btn btn-warning btn-sm" href="?c=users&a=Edit&id=<?=$user->getId()?>"></a>
                     <a class="fa fa-trash btn btn-danger btn-sm" href="?c=users&a=Delete&id=<?=$user->getId()?>"></a>
-                    <button onclick="deleteUser(this)" class="btn btn-danger btn-sm" data-href="?c=users&a=DeleteJson&id=<?=$user->getId()?>"><i class="fa fa-trash"></i> Borrar</button>
+                    <!-- <button onclick="deleteUser(this)" class="btn btn-danger btn-sm" data-href="?c=users&a=DeleteJson&id=<?=$user->getId()?>"><i class="fa fa-trash"></i> Borrar</button> -->
                 </td>
               </tr>
             <?php 
@@ -44,7 +44,7 @@
     </section>
   </div>
 </div>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function getUserDetails (element) {
   var uri = $(element).data('href')
   $.ajax({
@@ -68,4 +68,4 @@ function deleteUser (element) {
     })
   }
 }
-</script>
+</script> -->

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2017 at 03:47 AM
+-- Generation Time: Mar 26, 2018 at 03:53 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -42,8 +42,9 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`ID`, `CODE`, `BRAND`, `DESCRIPTION`, `PRICE`, `QUANTITY`) VALUES
-(7, 'A001', 'Black and Decker', 'Cofee Maker MK1', '38000.00', 17),
-(8, 'A002', 'Shi Fa Zhun', 'Cofee Maker Chino', '6000.00', 9);
+(1, 'AB001', 'Phillips', 'Desatornillador', '2500.00', 47),
+(2, 'AB002', 'Black and decker', 'Coffee Maker', '48000.00', 2),
+(3, 'AB003', 'Samsung', 'Televisor FHD 55', '700000.00', 3);
 
 -- --------------------------------------------------------
 
@@ -64,8 +65,10 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`ID`, `USERID`, `ARTICLEID`, `INVOICENUMBER`, `SALEDATE`) VALUES
-(6, 4, 7, '1', '2017-12-03 02:20:31'),
-(7, 4, 7, '2', '2017-12-03 02:20:35');
+(5, 3, 3, '3', '2017-12-09 15:57:22'),
+(6, 3, 2, '4', '2017-12-09 15:57:22'),
+(7, 3, 1, '5', '2018-03-03 02:43:06'),
+(8, 3, 3, '6', '2018-03-03 02:44:36');
 
 -- --------------------------------------------------------
 
@@ -84,7 +87,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`ID`, `SKEY`, `SVALUE`) VALUES
-(1, 'LASTINVOICENUMBER', '2');
+(1, 'LASTINVOICENUMBER', '6');
 
 -- --------------------------------------------------------
 
@@ -109,8 +112,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `IDCARD`, `NAME`, `LASTNAME`, `PHONE`, `EMAIL`, `USERNAME`, `PASSWORD`, `ROLE`) VALUES
-(3, '115870399', 'Kevin', 'Rodriguez', '84215616', '_@kevinrodriguez.io', 'admin', '$2y$10$kVqYJNd1U//al6swg0wE9ODlC8DeCus9qGW5vG8MMqMwvxdgq2l4e', 'ADMIN'),
-(4, '115870400', 'Angela', 'Jhonson', '85326727', 'maquinadehielo@gmail.com', 'client', '$2y$10$mdHY7TasIGa8Aizqt.PROeSX1HAR1O7C1UAEgK15mPEKuspnYdAYS', 'CLIENT');
+(1, '115870399', 'Kevin', 'Rodriguez', '84215616', '_@kevinrodriguez.io', 'admin', '$2y$10$PT7JY/5lAizPM8bf1QvYqe5R4xdbVnXNewQv9Zg3LxmLeC/FHqWVi', 'ADMIN'),
+(3, '115870400', 'Angela', 'Jhonson', '80809191', 'maquinadehielo@gmail.com', 'client', '$2y$10$r4ZtMHoCdu.38Q1tzxmtDevWf.wXaJ5afn7KJJKXvVgrnqMAoknr.', 'CLIENT');
 
 -- --------------------------------------------------------
 
@@ -181,13 +184,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -199,7 +202,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

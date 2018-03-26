@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="assets/dtadmin/styles/dt-gradients.css">
     <link rel="stylesheet" href="assets/dtadmin/styles/dt-theme.css">
     <link rel="stylesheet" href="assets/dtadmin/styles/dt-styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">  -->
 
     <script src="assets/dtadmin/scripts/jquery-3.2.1.js"></script>
     <script src="assets/dtadmin/scripts/bootstrap.min.js"></script>
