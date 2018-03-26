@@ -47,6 +47,10 @@ Developed by myself, implemented using it as master page
 - Inside of your methods, use the BaseController methods to render your response. Example, being inside of `Index(){...}`
   - `parent::RenderPage('Users', 'view/shared/dtadmin/layout.php', 'view/users/users.php', $model);`
     - In this case, the first parameter is the Page name, the second one is the master page path, the third one is the view to render, and the fourth one is the data to pass to the view.
+    
+### Important
+
+The model data will be passed to the view as a variable named $MODEL, if null, then $MODEL will be null too.
 
 ### Extras
 
