@@ -47,3 +47,48 @@ Developed by myself, implemented using it as master page
 - Inside of your methods, use the BaseController methods to render your response. Example, being inside of `Index(){...}`
   - `parent::RenderPage('Users', 'view/shared/dtadmin/layout.php', 'view/users/users.php', $model);`
     - In this case, the first parameter is the Page name, the second one is the master page path, the third one is the view to render, and the fourth one is the data to pass to the view.
+
+### Extras
+
+#### The Security class
+
+`class Security { ... }` This class has a handful of methods that allows the programmer to use session based authentication. The methods are:
+
+- `public static function CreateSessionForUser ($user) { ... }`
+
+  - Creates a new session for the given user model.
+
+- `public static function UserIsLoggedIn () { ... }`
+
+  - Checks if there is a logged user.
+
+- `public static function GetLoggedUser () { ... }`
+
+  - Gets the current logged user data, returns null if the user is not logged.
+
+- `public static function DeleteSession () { ... }`
+
+  - Destroys the current session
+
+- `public static function HashPassword ($password) { .. }`
+
+  - Uses PHP's default bcrypt to hash the given password string
+
+#### The database configuration class
+
+`class DataBase { ... }` - This class contains the default values for the connection to a mysql db. Set your default connection values in the default strings for the constructor.
+
+`public function __construct(
+  $hostname= 'localhost',
+  $database= 'awsrv',
+  $username= 'AWSRV',
+  $password= 'sanpedro123!'
+) { ... }`
+
+#### The assets folder
+
+Put here your css, js, fonts and image files. Mostly used by the views and the templates.
+
+#### The session folder
+
+It is highly recommended to use classes to manage your sessions. This will ensure scalability and code order. Use shoppingcart.session.php as an example.
