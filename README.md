@@ -1,6 +1,4 @@
-# wse-project
-
-## MVC Shopping Cart with PHP
+# MVC Shopping Cart with PHP
 
 ### MVC Pattern
 
