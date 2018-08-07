@@ -1,6 +1,6 @@
 # wse-project
 
-## Web Server Environment Project
+## MVC Shopping Cart with PHP
 
 ### MVC Pattern
 
