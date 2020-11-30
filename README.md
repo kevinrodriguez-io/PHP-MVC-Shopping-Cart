@@ -94,3 +94,7 @@ Put here your css, js, fonts and image files. Mostly used by the views and the t
 #### The session folder
 
 It is highly recommended to use classes to manage your sessions. This will ensure scalability and code order. Use shoppingcart.session.php as an example.
+
+### Important Notes
+
+The awsrv sql file contains a snapshot of the database being used for this example, be sure to load it on a XAMP server, remote instance or Docker; Also tweak the proper variables in the DataBase class to point it to your instance.
